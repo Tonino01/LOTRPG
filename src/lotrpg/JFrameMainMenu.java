@@ -48,10 +48,10 @@ public class JFrameMainMenu extends javax.swing.JFrame {
         impostazioni = new javax.swing.JButton();
         title = new javax.swing.JLabel();
         backround = new javax.swing.JLabel();
+        preGame = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1150, 650));
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -114,19 +114,26 @@ public class JFrameMainMenu extends javax.swing.JFrame {
 
         screen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nuovapartita.setText("NUOVA PARTITA");
+        nuovapartita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/nuovaPartita_button.png"))); // NOI18N
+        nuovapartita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nuovapartita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuovapartitaActionPerformed(evt);
             }
         });
-        screen.add(nuovapartita, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, -1, -1));
+        screen.add(nuovapartita, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 300, 60));
 
-        continua.setText("CONTINUA");
-        screen.add(continua, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, -1, -1));
+        continua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/continua_button.png"))); // NOI18N
+        continua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        continua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                continuaActionPerformed(evt);
+            }
+        });
+        screen.add(continua, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 120, 50));
 
         impostazioni.setText("IMPOSTAZIONI");
-        screen.add(impostazioni, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, -1, -1));
+        screen.add(impostazioni, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, -1, -1));
 
         title.setBackground(new java.awt.Color(204, 204, 204));
         title.setFont(new java.awt.Font("Yu Gothic", 1, 48)); // NOI18N
@@ -138,6 +145,9 @@ public class JFrameMainMenu extends javax.swing.JFrame {
         screen.add(backround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 600));
 
         getContentPane().add(screen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1920, 1030));
+
+        preGame.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(preGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1150, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void chiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chiudiActionPerformed
@@ -202,8 +212,19 @@ public class JFrameMainMenu extends javax.swing.JFrame {
     private void nuovapartitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuovapartitaActionPerformed
         
         
+        this.screen.setVisible(false);
+        
+        this.preGame.setVisible(true);
+        
+        
         
     }//GEN-LAST:event_nuovapartitaActionPerformed
+
+    private void continuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuaActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_continuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,75 +279,79 @@ public class JFrameMainMenu extends javax.swing.JFrame {
         
         this.setLocation((w/2)-(1150/2), (h/2)-(650/2));
         
+        this.preGame.setSize(screen.getSize());
+        
+        this.preGame.setLocation(screen.getLocation());
+        
+        this.preGame.setVisible(false);
+        
+    }
+    
+    private void setStyleFullScreen(){
+        
+        this.setShape(new RoundRectangle2D.Double(0, 0, getWidth()-17, getHeight()-40, 20, 20));
+        
+        this.dispose();
+        
+        this.setSize(w, h);
+        
+        this.setVisible(true);
+        
+        // grandezza Pannelli & posizione pulsanti home
+        
+        barramultifunzione.setSize(1920, 50);
+        
+        screen.setSize(w, 1030);
+        
+        chiudi.setLocation(1870, 10);
+        
+        maxi.setLocation(1810, 10);
+        
+        
+        
+        restore.setLocation(1810, 10);
+        
+        riduci.setLocation(1750, 10);
+        
+        
+        
+        title.setSize(1460, 390);
+        
+        backround.setSize(w, 1030);
         
         
     }
     
-//    private void setStyleFullScreen(){
-//        
-//        this.setShape(new RoundRectangle2D.Double(0, 0, getWidth()-17, getHeight()-40, 20, 20));
-//        
-//        this.dispose();
-//        
-//        this.setSize(w, h);
-//        
-//        this.setVisible(true);
-//        
-//        // grandezza Pannelli & posizione pulsanti home
-//        
-//        barramultifunzione.setSize(1920, 50);
-//        
-//        screen.setSize(w, 1030);
-//        
-//        chiudi.setLocation(1870, 10);
-//        
-//        maxi.setLocation(1810, 10);
-//        
-//        
-//        
-//        restore.setLocation(1810, 10);
-//        
-//        riduci.setLocation(1750, 10);
-//        
-//        
-//        
-//        title.setSize(1460, 390);
-//        
-//        backround.setSize(w, 1030);
-//        
-//        
-//    }
-//    
-//    
-//    private void setStyleWindow(){
-//        
-//
-//        
-//        
-//        
-//        // grandezza Pannelli & posizione pulsanti home
-//        
-//        chiudi.setLocation(1870 - 900, 10);
-//        
-//        maxi.setLocation(1810 - 900, 10);
-//        
-//        
-//        
-//        restore.setLocation(1810 - 900, 10);
-//        
-//        riduci.setLocation(1750 - 900, 10);
-//        
-//        barramultifunzione.setSize(w - 900, 50);
-//        
-//        title.setSize(1460-900, 390-100);
-//        
-//        backround.setSize(w-900, 1030-500);
-//        
-//        screen.setSize(w - 900, 1030 - 500);
-//        
-//        
-//        
-//    }
+    
+    private void setStyleWindow(){
+        
+
+        
+        
+        
+        // grandezza Pannelli & posizione pulsanti home
+        
+        chiudi.setLocation(1870 - 900, 10);
+        
+        maxi.setLocation(1810 - 900, 10);
+        
+        
+        
+        restore.setLocation(1810 - 900, 10);
+        
+        riduci.setLocation(1750 - 900, 10);
+        
+        barramultifunzione.setSize(w - 900, 50);
+        
+        title.setSize(1460-900, 390-100);
+        
+        backround.setSize(w-900, 1030-500);
+        
+        screen.setSize(w - 900, 1030 - 500);
+        
+        
+        
+    }
     
     
     
@@ -340,6 +365,7 @@ public class JFrameMainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton maxi;
     private javax.swing.JButton nuovapartita;
+    private javax.swing.JPanel preGame;
     private javax.swing.JButton restore;
     private javax.swing.JButton riduci;
     private javax.swing.JPanel screen;
