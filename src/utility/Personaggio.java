@@ -8,6 +8,15 @@ package utility;
  *
  * @author tonin
  */
+
+
 public class Personaggio {
+    
+    protected String nome;
+    
+    protected boolean gender;
+    
+    protected int attacco;
+    
     
 }
