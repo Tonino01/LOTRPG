@@ -7,6 +7,10 @@ package lotrpg;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.geom.RoundRectangle2D;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Paths;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.plaf.IconUIResource;
@@ -49,10 +53,30 @@ public class JFrameMain extends javax.swing.JFrame {
         title = new javax.swing.JLabel();
         homeBackround = new javax.swing.JLabel();
         saveOption = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        slvataggio = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        titoloSaveOption = new javax.swing.JLabel();
+        campoNomeSave = new javax.swing.JTextField();
+        progressoScritta1 = new javax.swing.JLabel();
+        progressoValore1 = new javax.swing.JLabel();
+        salvataggio1 = new javax.swing.JButton();
+        saveOptionBackround = new javax.swing.JLabel();
+        creazionePersonaggio = new javax.swing.JPanel();
+        titoloCreazionePersonaggio = new javax.swing.JLabel();
+        campoNome = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        SelezionaClasse = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        selezionaRazza = new javax.swing.JComboBox<>();
+        statistiche = new javax.swing.JTextArea();
+        selezionaAbilità = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        nomeCampoNome = new javax.swing.JLabel();
+        nomeSesso = new javax.swing.JLabel();
+        nomeRazza = new javax.swing.JLabel();
+        miniTexturePersonaggio = new javax.swing.JLabel();
+        nomeStatistiche = new javax.swing.JLabel();
+        nomeAbilita = new javax.swing.JLabel();
+        nomeClasse = new javax.swing.JLabel();
+        creazionePersonaggioBackround = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -152,20 +176,117 @@ public class JFrameMain extends javax.swing.JFrame {
 
         saveOption.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setText("SLOT DI SALVATAGGIO");
-        saveOption.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 140, 50));
+        titoloSaveOption.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        titoloSaveOption.setForeground(new java.awt.Color(0, 0, 0));
+        titoloSaveOption.setText("SLOT DI SALVATAGGIO");
+        saveOption.add(titoloSaveOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 260, 50));
 
-        slvataggio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        campoNomeSave.setBackground(new java.awt.Color(102, 102, 102));
+        campoNomeSave.setForeground(new java.awt.Color(255, 255, 255));
+        campoNomeSave.setText("nome");
+        saveOption.add(campoNomeSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 150, -1));
 
-        jButton2.setText("jButton2");
-        slvataggio.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        progressoScritta1.setForeground(new java.awt.Color(0, 0, 0));
+        progressoScritta1.setText("progresso:");
+        saveOption.add(progressoScritta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
 
-        jLabel4.setText("jLabel4");
-        slvataggio.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        progressoValore1.setForeground(new java.awt.Color(0, 0, 0));
+        progressoValore1.setText("new game");
+        progressoValore1.setToolTipText("");
+        saveOption.add(progressoValore1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
 
-        saveOption.add(slvataggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 200, 200));
+        salvataggio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallery/salvataggio-backround1.png"))); // NOI18N
+        salvataggio1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salvataggio1.setPreferredSize(new java.awt.Dimension(170, 170));
+        salvataggio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvataggio1ActionPerformed(evt);
+            }
+        });
+        saveOption.add(salvataggio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 170, 170));
+
+        saveOptionBackround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallery/saveOption-backround.png"))); // NOI18N
+        saveOption.add(saveOptionBackround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 600));
 
         getContentPane().add(saveOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1150, 600));
+
+        creazionePersonaggio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titoloCreazionePersonaggio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        titoloCreazionePersonaggio.setForeground(new java.awt.Color(0, 0, 0));
+        titoloCreazionePersonaggio.setText("CREA PERSONAGGIO");
+        creazionePersonaggio.add(titoloCreazionePersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 230, 40));
+
+        campoNome.setText("jTextField1");
+        creazionePersonaggio.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2" }));
+        creazionePersonaggio.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        SelezionaClasse.setViewportView(jList1);
+
+        creazionePersonaggio.add(SelezionaClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 140, 240));
+
+        selezionaRazza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        creazionePersonaggio.add(selezionaRazza, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+
+        statistiche.setColumns(20);
+        statistiche.setRows(5);
+        creazionePersonaggio.add(statistiche, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, 360, 260));
+
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        selezionaAbilità.setViewportView(jList2);
+
+        creazionePersonaggio.add(selezionaAbilità, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 290, 160, 240));
+
+        nomeCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomeCampoNome.setForeground(new java.awt.Color(0, 0, 0));
+        nomeCampoNome.setText("Nome : ");
+        creazionePersonaggio.add(nomeCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
+
+        nomeSesso.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomeSesso.setForeground(new java.awt.Color(0, 0, 0));
+        nomeSesso.setText("Sesso :");
+        creazionePersonaggio.add(nomeSesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+
+        nomeRazza.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomeRazza.setForeground(new java.awt.Color(0, 0, 0));
+        nomeRazza.setText("Razza :");
+        creazionePersonaggio.add(nomeRazza, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+
+        miniTexturePersonaggio.setForeground(new java.awt.Color(0, 0, 0));
+        miniTexturePersonaggio.setText("Immagine Mancante");
+        creazionePersonaggio.add(miniTexturePersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 110, -1, -1));
+
+        nomeStatistiche.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomeStatistiche.setForeground(new java.awt.Color(0, 0, 0));
+        nomeStatistiche.setText("Statistiche :");
+        creazionePersonaggio.add(nomeStatistiche, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, -1, -1));
+
+        nomeAbilita.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomeAbilita.setForeground(new java.awt.Color(0, 0, 0));
+        nomeAbilita.setText("Abilità :");
+        creazionePersonaggio.add(nomeAbilita, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, -1));
+
+        nomeClasse.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomeClasse.setForeground(new java.awt.Color(0, 0, 0));
+        nomeClasse.setText("Classe :");
+        nomeClasse.setToolTipText("");
+        creazionePersonaggio.add(nomeClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
+
+        creazionePersonaggioBackround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallery/saveOption-backround.png"))); // NOI18N
+        creazionePersonaggio.add(creazionePersonaggioBackround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 600));
+
+        getContentPane().add(creazionePersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1150, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void chiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chiudiActionPerformed
@@ -244,6 +365,22 @@ public class JFrameMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_continuaActionPerformed
 
+    private void salvataggio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvataggio1ActionPerformed
+        
+        
+        this.saveOption.setVisible(false);
+        
+        if(getProgresso(save1)== 0){
+            this.creazionePersonaggio.setVisible(true);
+        }else{
+            
+            // fare partire la partita con il progresso corrente
+            
+        }
+        
+        
+    }//GEN-LAST:event_salvataggio1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -298,14 +435,47 @@ public class JFrameMain extends javax.swing.JFrame {
         
         this.setLocation((w/2)-(1150/2), (h/2)-(650/2));
         
+        createSaveOption();
+        
+        ceateCreazionePersonaggio();
+        
+    }
+    
+    
+    private void createSaveOption(){
+        
         this.saveOption.setSize(screen.getSize());
         
         this.saveOption.setLocation(screen.getLocation());
         
-        
         this.saveOption.setVisible(false);
         
+        if(getProgresso(save1)== 0 ){
+            this.progressoValore1.setText("nuova partita");
+        }else{
+            
+            this.progressoValore1.setText(getProgresso(save1) + "");
+            
+        }
+        
+        
+        
     }
+    
+    
+    private void ceateCreazionePersonaggio(){
+        
+        this.creazionePersonaggio.setSize(screen.getSize());
+        
+        this.creazionePersonaggio.setLocation(screen.getLocation());
+        
+        this.creazionePersonaggio.setVisible(false);
+        
+        
+        
+    }
+    
+    
     
     private void setStyleFullScreen(){
         
@@ -374,25 +544,99 @@ public class JFrameMain extends javax.swing.JFrame {
     }
     
     
+    private int getProgresso(String filePath){
+        
+        int progresso = 0;
+        
+        
+        
+        BufferedReader reader = null;
+
+        try {
+            // Apri il file e crea il BufferedReader
+            reader = new BufferedReader(new FileReader(filePath));
+
+            // Leggi il file riga per riga
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Controlla se la riga contiene la parola "progresso: "
+                if (line.contains("Progresso: ")) {
+                    // Estrai il numero dopo "progresso: "
+                    String progressoStr = line.split("Progresso: ")[1].trim();
+                    try {
+                        progresso = Integer.parseInt(progressoStr);
+                        System.out.println("Il Progresso è: " + progresso);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Formato non valido dopo 'Progresso: '");
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Stampa l'errore se non si riesce a leggere il file
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close(); // Chiudi il reader per evitare memory leak
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        
+        
+        return progresso;
+    }
+    
+    
+    //variabili personali
+    
+    private String nome1;
+    
+    
+    
+    
+    String relativePath = "src/save/save1.txt";
+    String save1 = Paths.get(relativePath).toAbsolutePath().toString();
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane SelezionaClasse;
     private javax.swing.JPanel barramultifunzione;
+    private javax.swing.JTextField campoNome;
+    private javax.swing.JTextField campoNomeSave;
     private javax.swing.JButton chiudi;
     private javax.swing.JButton continua;
+    private javax.swing.JPanel creazionePersonaggio;
+    private javax.swing.JLabel creazionePersonaggioBackround;
     private javax.swing.JLabel homeBackround;
     private javax.swing.JButton impostazioni;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JButton maxi;
+    private javax.swing.JLabel miniTexturePersonaggio;
+    private javax.swing.JLabel nomeAbilita;
+    private javax.swing.JLabel nomeCampoNome;
+    private javax.swing.JLabel nomeClasse;
+    private javax.swing.JLabel nomeRazza;
+    private javax.swing.JLabel nomeSesso;
+    private javax.swing.JLabel nomeStatistiche;
     private javax.swing.JButton nuovapartita;
+    private javax.swing.JLabel progressoScritta1;
+    private javax.swing.JLabel progressoValore1;
     private javax.swing.JButton restore;
     private javax.swing.JButton riduci;
+    private javax.swing.JButton salvataggio1;
     private javax.swing.JPanel saveOption;
+    private javax.swing.JLabel saveOptionBackround;
     private javax.swing.JPanel screen;
-    private javax.swing.JPanel slvataggio;
+    private javax.swing.JScrollPane selezionaAbilità;
+    private javax.swing.JComboBox<String> selezionaRazza;
+    private javax.swing.JTextArea statistiche;
     private javax.swing.JLabel title;
+    private javax.swing.JLabel titoloCreazionePersonaggio;
+    private javax.swing.JLabel titoloSaveOption;
     // End of variables declaration//GEN-END:variables
 }
