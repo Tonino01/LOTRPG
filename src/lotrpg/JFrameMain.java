@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.plaf.IconUIResource;
+import utility.Personaggio;
 
 /**
  *
@@ -62,14 +63,15 @@ public class JFrameMain extends javax.swing.JFrame {
         creazionePersonaggio = new javax.swing.JPanel();
         titoloCreazionePersonaggio = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        SelezionaClasse = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        selezionaSesso = new javax.swing.JComboBox<>();
+        selezionaClasse = new javax.swing.JScrollPane();
+        listaSelezionaClasse = new javax.swing.JList<>();
         selezionaRazza = new javax.swing.JComboBox<>();
         statistiche = new javax.swing.JTextArea();
-        selezionaAbilità = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        selezionaAbilita = new javax.swing.JScrollPane();
+        listaSelezionaAbilita = new javax.swing.JList<>();
         nomeCampoNome = new javax.swing.JLabel();
+        creaPersonaggioButton = new javax.swing.JButton();
         nomeSesso = new javax.swing.JLabel();
         nomeRazza = new javax.swing.JLabel();
         miniTexturePersonaggio = new javax.swing.JLabel();
@@ -184,6 +186,11 @@ public class JFrameMain extends javax.swing.JFrame {
         campoNomeSave.setBackground(new java.awt.Color(102, 102, 102));
         campoNomeSave.setForeground(new java.awt.Color(255, 255, 255));
         campoNomeSave.setText("nome");
+        campoNomeSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNomeSaveActionPerformed(evt);
+            }
+        });
         saveOption.add(campoNomeSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 150, -1));
 
         progressoScritta1.setForeground(new java.awt.Color(0, 0, 0));
@@ -215,75 +222,95 @@ public class JFrameMain extends javax.swing.JFrame {
         titoloCreazionePersonaggio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         titoloCreazionePersonaggio.setForeground(new java.awt.Color(0, 0, 0));
         titoloCreazionePersonaggio.setText("CREA PERSONAGGIO");
-        creazionePersonaggio.add(titoloCreazionePersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 230, 40));
+        creazionePersonaggio.add(titoloCreazionePersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 230, 40));
+        creazionePersonaggio.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 120, -1));
 
-        campoNome.setText("jTextField1");
-        creazionePersonaggio.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
+        selezionaSesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maschio", "Femmina" }));
+        selezionaSesso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selezionaSessoActionPerformed(evt);
+            }
+        });
+        creazionePersonaggio.add(selezionaSesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 120, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2" }));
-        creazionePersonaggio.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+        listaSelezionaClasse.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        listaSelezionaClasse.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Guerriero", "Arcere", "Guaritore", "Esploratore", "Combattente", "Avventuriero", "Cavaliere" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        SelezionaClasse.setViewportView(jList1);
+        listaSelezionaClasse.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        listaSelezionaClasse.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaSelezionaClasseValueChanged(evt);
+            }
+        });
+        selezionaClasse.setViewportView(listaSelezionaClasse);
 
-        creazionePersonaggio.add(SelezionaClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 140, 240));
+        creazionePersonaggio.add(selezionaClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 140, 200));
 
-        selezionaRazza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        creazionePersonaggio.add(selezionaRazza, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+        selezionaRazza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elfo", "Hobbit", "Stregone", "Nano", "Uomo" }));
+        creazionePersonaggio.add(selezionaRazza, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 130, -1));
 
         statistiche.setColumns(20);
         statistiche.setRows(5);
-        creazionePersonaggio.add(statistiche, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, 360, 260));
+        creazionePersonaggio.add(statistiche, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 250, 360, 260));
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        listaSelezionaAbilita.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        selezionaAbilità.setViewportView(jList2);
+        listaSelezionaAbilita.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        listaSelezionaAbilita.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selezionaAbilita.setViewportView(listaSelezionaAbilita);
 
-        creazionePersonaggio.add(selezionaAbilità, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 290, 160, 240));
+        creazionePersonaggio.add(selezionaAbilita, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 160, 210));
 
         nomeCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeCampoNome.setForeground(new java.awt.Color(0, 0, 0));
         nomeCampoNome.setText("Nome : ");
-        creazionePersonaggio.add(nomeCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
+        creazionePersonaggio.add(nomeCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+
+        creaPersonaggioButton.setText("INIZIA");
+        creaPersonaggioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creaPersonaggioButtonActionPerformed(evt);
+            }
+        });
+        creazionePersonaggio.add(creaPersonaggioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(996, 537, 120, 40));
 
         nomeSesso.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeSesso.setForeground(new java.awt.Color(0, 0, 0));
         nomeSesso.setText("Sesso :");
-        creazionePersonaggio.add(nomeSesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+        creazionePersonaggio.add(nomeSesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
 
         nomeRazza.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeRazza.setForeground(new java.awt.Color(0, 0, 0));
         nomeRazza.setText("Razza :");
-        creazionePersonaggio.add(nomeRazza, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+        creazionePersonaggio.add(nomeRazza, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, -1, -1));
 
         miniTexturePersonaggio.setForeground(new java.awt.Color(0, 0, 0));
         miniTexturePersonaggio.setText("Immagine Mancante");
-        creazionePersonaggio.add(miniTexturePersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 110, -1, -1));
+        creazionePersonaggio.add(miniTexturePersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 20, 180, 200));
 
         nomeStatistiche.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeStatistiche.setForeground(new java.awt.Color(0, 0, 0));
         nomeStatistiche.setText("Statistiche :");
-        creazionePersonaggio.add(nomeStatistiche, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, -1, -1));
+        creazionePersonaggio.add(nomeStatistiche, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 220, -1, -1));
 
         nomeAbilita.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeAbilita.setForeground(new java.awt.Color(0, 0, 0));
         nomeAbilita.setText("Abilità :");
-        creazionePersonaggio.add(nomeAbilita, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, -1));
+        creazionePersonaggio.add(nomeAbilita, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
 
         nomeClasse.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeClasse.setForeground(new java.awt.Color(0, 0, 0));
         nomeClasse.setText("Classe :");
         nomeClasse.setToolTipText("");
-        creazionePersonaggio.add(nomeClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
+        creazionePersonaggio.add(nomeClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
 
-        creazionePersonaggioBackround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallery/saveOption-backround.png"))); // NOI18N
+        creazionePersonaggioBackround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallery/GenericBackround1.png"))); // NOI18N
         creazionePersonaggio.add(creazionePersonaggioBackround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 600));
 
         getContentPane().add(creazionePersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1150, 600));
@@ -381,6 +408,56 @@ public class JFrameMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_salvataggio1ActionPerformed
 
+    private void campoNomeSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeSaveActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_campoNomeSaveActionPerformed
+
+    private void creaPersonaggioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaPersonaggioButtonActionPerformed
+        
+        
+        String tempNome = null;
+        
+        String tempSesso = selezionaSesso.getSelectedItem().toString();
+        
+        String tempRazza = selezionaRazza.getSelectedItem().toString();
+        
+        String tempClasse = listaSelezionaClasse.getSelectedValue();
+        
+        String tempAbilita = listaSelezionaAbilita.getSelectedValue();
+        
+        
+        
+        // imposta nome
+        if( this.campoNome.getText()== null){
+            
+            //da fare pop up che avverte della mancanza di nome
+            
+        }else{
+            tempNome = this.campoNome.getText();
+        }
+        
+        
+        
+        Personaggio personaggio1 = new Personaggio(tempNome, tempSesso, tempRazza, tempClasse, tempAbilita);
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_creaPersonaggioButtonActionPerformed
+
+    private void selezionaSessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selezionaSessoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selezionaSessoActionPerformed
+
+    private void listaSelezionaClasseValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaSelezionaClasseValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaSelezionaClasseValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -425,7 +502,7 @@ public class JFrameMain extends javax.swing.JFrame {
     public void setStyle() {
         
         setIconImage(Toolkit.getDefaultToolkit().getImage("src/icon/LOTRPG-100.png"));
-        this.setSize(1150, 650);
+        this.setSize(1150, 690);
         this.dispose();
         this.setUndecorated(true); 
         this.setVisible(true);
@@ -600,21 +677,20 @@ public class JFrameMain extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane SelezionaClasse;
     private javax.swing.JPanel barramultifunzione;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNomeSave;
     private javax.swing.JButton chiudi;
     private javax.swing.JButton continua;
+    private javax.swing.JButton creaPersonaggioButton;
     private javax.swing.JPanel creazionePersonaggio;
     private javax.swing.JLabel creazionePersonaggioBackround;
     private javax.swing.JLabel homeBackround;
     private javax.swing.JButton impostazioni;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JList<String> listaSelezionaAbilita;
+    private javax.swing.JList<String> listaSelezionaClasse;
     private javax.swing.JButton maxi;
     private javax.swing.JLabel miniTexturePersonaggio;
     private javax.swing.JLabel nomeAbilita;
@@ -632,8 +708,10 @@ public class JFrameMain extends javax.swing.JFrame {
     private javax.swing.JPanel saveOption;
     private javax.swing.JLabel saveOptionBackround;
     private javax.swing.JPanel screen;
-    private javax.swing.JScrollPane selezionaAbilità;
+    private javax.swing.JScrollPane selezionaAbilita;
+    private javax.swing.JScrollPane selezionaClasse;
     private javax.swing.JComboBox<String> selezionaRazza;
+    private javax.swing.JComboBox<String> selezionaSesso;
     private javax.swing.JTextArea statistiche;
     private javax.swing.JLabel title;
     private javax.swing.JLabel titoloCreazionePersonaggio;
