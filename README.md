@@ -1,7 +1,7 @@
 # LOTRPG
 
 
-![Uploading Immagine 2024-09-28 185339.png…]()
+![Immagine 2024-09-28 185339](https://github.com/user-attachments/assets/e3451b95-bdb3-4349-ae5c-3c460b869ec4)
 
 
 
