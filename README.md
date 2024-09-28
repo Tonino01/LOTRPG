@@ -1,5 +1,10 @@
 # LOTRPG
 
+
+![Uploading Immagine 2024-09-28 185339.png…]()
+
+
+
 Titolo: "L'Ombra dell'Eterno"
 Prologo
 In un mondo antico chiamato Veldoria, esisteva un'era in cui le razze vivevano in armonia. Umani, elfi, nani e creature magiche prosperavano grazie al potere di un misterioso artefatto chiamato L'Anello dell'Eterno, un oggetto forgiato dai primi saggi per preservare l'equilibrio. Tuttavia, la pace fu spezzata quando un potente stregone conosciuto come Zhorak l'Oscuro tentò di corrompere l'Anello, desiderando il potere assoluto. Un esercito di creature dell'ombra fu liberato, e la guerra travolse il continente.
