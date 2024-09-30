@@ -45,6 +45,12 @@ public class Personaggio {
     
     
     
+    public Personaggio(){
+    
+    
+    }
+    
+    
     
     
     public Personaggio(String Nome, String Sesso, String Razza, String Classe,String Abilita){
@@ -61,37 +67,36 @@ public class Personaggio {
         
         this.abilita = Abilita;
         
-        //stat personaggio
-        
-        this.vita = 0;
-        
-        this.corporatura = 0;
-        
-        this.stamina = 0;
-        
-        this.attacco = 0;
-        
-        this.difesa = 0;
-        
-        this.rumore = 0;
-        
         this.inventario = null;
+        
+        setPersonaggioStat(Razza);
         
         
         
     }
     
     
-    public void calcolaVita(int Vita, String additivo){
+    
+    public void setPersonaggioStat(String razza){
+        
+        //stat personaggio
         
         if(Main.partita1.getProgresso(Paths.get(relativePath).toAbsolutePath().toString()) == 0){
             
-            switch (this.razza) {
+            switch (razza) {
             case "Uomo":
                 
                 this.vita = 100;
                 
                 this.corporatura = 80;
+                
+                this.stamina = 60;
+                
+                this.attacco = 10;
+                
+                this.difesa = this.corporatura / 40;
+                
+                this.rumore = 20;
                 
                 break;
             case "Hobbit":
@@ -100,12 +105,28 @@ public class Personaggio {
                 
                 this.corporatura = 40;
                 
+                this.stamina = 70;
+                
+                this.attacco = 3;
+                
+                this.difesa = this.corporatura / 40;
+                
+                this.rumore = 5;
+                
                 break;
             case "Elfo":
                 
                 this.vita = 110;
                 
                 this.corporatura = 85;
+                
+                this.stamina = 80;
+                
+                this.attacco = 13;
+                
+                this.difesa = this.corporatura / 40;
+                
+                this.rumore = 13;
                 
                 break;
             case "Stregone":
@@ -114,6 +135,14 @@ public class Personaggio {
                 
                 this.corporatura = 80;
                 
+                this.stamina = 90;
+                
+                this.attacco = 8;
+                
+                this.difesa = this.corporatura / 40;
+                
+                this.rumore = 20;
+                
                 break;
             case "Nano":
                 
@@ -121,50 +150,89 @@ public class Personaggio {
                 
                 this.corporatura = 100;
                 
+                this.stamina = 40;
+                
+                this.attacco = 14;
+                
+                this.difesa = this.corporatura / 40;
+                
+                this.rumore = 30;
+                
                 break;
             default:
                 throw new AssertionError();
         }
             
+            
+            
+            
         }
         
         
-        
- 
-        
-        
-        
-        
+    }
+    
+    
+
+    //Setter
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setSesso(String sesso) {
+        this.sesso = sesso;
+    }
+
+    public void setRazza(String razza) {
+        this.razza = razza;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+
+    public void setAbilita(String abilita) {
+        this.abilita = abilita;
+    }
+
+    public void setVita(int vita) {
+        this.vita = vita;
+    }
+
+    public void setCorporatura(int corporatura) {
+        this.corporatura = corporatura;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public void setAttacco(int attacco) {
+        this.attacco = attacco;
+    }
+
+    public void setDifesa(int difesa) {
+        this.difesa = difesa;
+    }
+
+    public void setInventario(String[] inventario) {
+        this.inventario = inventario;
+    }
+
+    public void setRumore(int rumore) {
+        this.rumore = rumore;
     }
     
     
     
     
+    // Getter
     
-    
-    
-    
-
-    @Override
-    public String toString() {
-        return "Personaggio{" + "nome=" + nome + ", sesso=" + sesso + ", razza=" + razza + ", classe=" + classe + ", abilita=" + abilita + ", attacco=" + attacco + '}';
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     public String getNome() {
         return nome;
     }
 
-    public String isSesso() {
+    public String getSesso() {
         return sesso;
     }
 
@@ -172,9 +240,56 @@ public class Personaggio {
         return razza;
     }
 
+    public String getClasse() {
+        return classe;
+    }
+
     public String getAbilita() {
         return abilita;
     }
+
+    public int getVita() {
+        return vita;
+    }
+
+    public int getCorporatura() {
+        return corporatura;
+    }
+
+    public int getStamina() {
+        return stamina;
+    }
+
+    public int getAttacco() {
+        return attacco;
+    }
+
+    public int getDifesa() {
+        return difesa;
+    }
+
+    public String[] getInventario() {
+        return inventario;
+    }
+
+    public int getRumore() {
+        return rumore;
+    }
+    
+    
+    
+
+    
+    
+    
+    @Override
+    public String toString() {
+        return "NOME: " + nome + "\nSESSO: " + sesso + "\nRAZZA: " + razza + "\nCLASSE: " + classe + "\nABILITA: " + abilita + "\nVITA: " + vita + "\nCORPORATURA: " + corporatura + "\nSTAMINA: " + stamina + "\nATTACCO: " + attacco + "\nDIFESA: " + difesa + "\nINVENTARIO: " + inventario + "\nRUMORE" + rumore;
+    }
+    
+    
+    
+    
     
     
     
