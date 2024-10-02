@@ -2,8 +2,9 @@
 
 package utility;
 
+import data.salvaPartitaSQL;
 import java.nio.file.Paths;
-import lotrpg.Main;
+import lotrpg.*;
 import static lotrpg.Main.relativePath;
 
 /**
@@ -24,7 +25,9 @@ public class Personaggio {
     
     protected String classe;
     
-    protected String abilita;
+    protected String abilita1;
+    
+    protected String abilita2;
     
     
     // stat personaggio
@@ -53,7 +56,7 @@ public class Personaggio {
     
     
     
-    public Personaggio(String Nome, String Sesso, String Razza, String Classe,String Abilita){
+    public Personaggio(String Nome, String Sesso, String Razza, String Classe,String Abilita1, String Abilita2){
         
         //personaggio
     
@@ -65,11 +68,45 @@ public class Personaggio {
         
         this.classe = Classe;
         
-        this.abilita = Abilita;
+        this.abilita1 = Abilita1;
+        
+        this.abilita2 = Abilita2;
         
         this.inventario = null;
         
-        setPersonaggioStat(Razza);
+        setPersonaggioStatDefault(Razza);
+        
+        
+        
+    }
+    
+    public Personaggio(Personaggio copy){
+        
+        this.nome = copy.nome;
+        
+        this.sesso = copy.sesso;
+        
+        this.razza = copy.razza;
+        
+        this.classe = copy.classe;
+        
+        this.abilita1 = copy.abilita1;
+        
+        this.abilita2 = copy.abilita2;
+        
+        this.vita = copy.vita;
+        
+        this.stamina = copy.stamina;
+        
+        this.corporatura = copy.corporatura;
+        
+        this.difesa = copy.difesa;
+        
+        this.attacco = copy.attacco;
+        
+        this.rumore = copy.rumore;
+        
+        this.inventario = copy.inventario;
         
         
         
@@ -77,11 +114,11 @@ public class Personaggio {
     
     
     
-    public void setPersonaggioStat(String razza){
+    public void setPersonaggioStatDefault(String razza){
         
         //stat personaggio
         
-        if(Main.partita1.getProgresso(Paths.get(relativePath).toAbsolutePath().toString()) == 0){
+        
             
             switch (razza) {
             case "Uomo":
@@ -166,10 +203,23 @@ public class Personaggio {
             
             
             
-        }
-        
-        
     }
+       
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 
@@ -191,8 +241,12 @@ public class Personaggio {
         this.classe = classe;
     }
 
-    public void setAbilita(String abilita) {
-        this.abilita = abilita;
+    public void setAbilita1(String abilita1) {
+        this.abilita1 = abilita1;
+    }
+    
+    public void setAbilita2(String abilita2) {
+        this.abilita2 = abilita2;
     }
 
     public void setVita(int vita) {
@@ -244,8 +298,12 @@ public class Personaggio {
         return classe;
     }
 
-    public String getAbilita() {
-        return abilita;
+    public String getAbilita1() {
+        return abilita1;
+    }
+    
+    public String getAbilita2() {
+        return abilita2;
     }
 
     public int getVita() {
@@ -284,7 +342,7 @@ public class Personaggio {
     
     @Override
     public String toString() {
-        return "NOME: " + nome + "\nSESSO: " + sesso + "\nRAZZA: " + razza + "\nCLASSE: " + classe + "\nABILITA: " + abilita + "\nVITA: " + vita + "\nCORPORATURA: " + corporatura + "\nSTAMINA: " + stamina + "\nATTACCO: " + attacco + "\nDIFESA: " + difesa + "\nINVENTARIO: " + inventario + "\nRUMORE" + rumore;
+        return "NOME: " + nome + "\nSESSO: " + sesso + "\nRAZZA: " + razza + "\nCLASSE: " + classe + "\nABILITA1: " + abilita1 + "\nABILITA2: " + abilita1 + "\nVITA: " + vita + "\nCORPORATURA: " + corporatura + "\nSTAMINA: " + stamina + "\nATTACCO: " + attacco + "\nDIFESA: " + difesa + "\nINVENTARIO: " + inventario + "\nRUMORE: " + rumore;
     }
     
     

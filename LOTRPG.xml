@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\tonin\Documents\NetBeansProjects\LOTRPG\dist\LOTRPG.jar</jar>
+  <outfile>C:\Users\tonin\Documents\NetBeansProjects\LOTRPG\LOTRPG.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\tonin\Documents\NetBeansProjects\LOTRPG\src\icon\LOTRPG.png</icon>
+  <singleInstance>
+    <mutexName>LOTRPG.exe</mutexName>
+    <windowTitle>LOTRPG.exe</windowTitle>
+  </singleInstance>
+  <classPath>
+    <mainClass>lotrpg.LOTRPG</mainClass>
+    <cp>lib/AbsoluteLayout.jar</cp>
+  </classPath>
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+</launch4jConfig>

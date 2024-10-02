@@ -1,6 +1,7 @@
 
 package lotrpg;
 
+import data.salvaPartitaSQL;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.geom.RoundRectangle2D;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.IconUIResource;
 import utility.Partita;
 import utility.Personaggio;
@@ -53,10 +55,23 @@ public class Main extends javax.swing.JFrame {
         homeBackround = new javax.swing.JLabel();
         saveOption = new javax.swing.JPanel();
         titoloSaveOption = new javax.swing.JLabel();
-        campoNomeSave = new javax.swing.JTextField();
+        campoNomeSave1 = new javax.swing.JTextField();
+        campoNomeSave2 = new javax.swing.JTextField();
+        campoNomeSave3 = new javax.swing.JTextField();
+        campoNomeSave4 = new javax.swing.JTextField();
         progressoScritta1 = new javax.swing.JLabel();
+        progressoScritta2 = new javax.swing.JLabel();
+        progressoScritta3 = new javax.swing.JLabel();
+        progressoScritta4 = new javax.swing.JLabel();
         progressoValore1 = new javax.swing.JLabel();
+        progressoValore2 = new javax.swing.JLabel();
+        progressoValore3 = new javax.swing.JLabel();
+        progressoValore4 = new javax.swing.JLabel();
         salvataggio1 = new javax.swing.JButton();
+        salvataggio2 = new javax.swing.JButton();
+        salvataggio3 = new javax.swing.JButton();
+        salvataggio4 = new javax.swing.JButton();
+        indietroButton = new javax.swing.JButton();
         saveOptionBackround = new javax.swing.JLabel();
         creazionePersonaggio = new javax.swing.JPanel();
         titoloCreazionePersonaggio = new javax.swing.JLabel();
@@ -65,13 +80,15 @@ public class Main extends javax.swing.JFrame {
         selezionaSesso = new javax.swing.JComboBox<>();
         selezionaClasse = new javax.swing.JComboBox<>();
         selezionaRazza = new javax.swing.JComboBox<>();
-        selezionaAbilita = new javax.swing.JComboBox<>();
+        selezionaAbilita1 = new javax.swing.JComboBox<>();
+        selezionaAbilita2 = new javax.swing.JComboBox<>();
         nomeCampoNome = new javax.swing.JLabel();
         inizia = new javax.swing.JButton();
         nomeSesso = new javax.swing.JLabel();
         nomeRazza = new javax.swing.JLabel();
         miniTexturePersonaggio = new javax.swing.JLabel();
-        nomeAbilita = new javax.swing.JLabel();
+        nomeAbilita1 = new javax.swing.JLabel();
+        nomeAbilita2 = new javax.swing.JLabel();
         nomeClasse = new javax.swing.JLabel();
         testoCorporatura = new javax.swing.JLabel();
         testoStamina = new javax.swing.JLabel();
@@ -88,6 +105,8 @@ public class Main extends javax.swing.JFrame {
         valoreRumore = new javax.swing.JLabel();
         StatBackround = new javax.swing.JLabel();
         creazionePersonaggioBackround = new javax.swing.JLabel();
+        partita = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -192,24 +211,77 @@ public class Main extends javax.swing.JFrame {
         titoloSaveOption.setText("SLOT DI SALVATAGGIO");
         saveOption.add(titoloSaveOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 260, 50));
 
-        campoNomeSave.setBackground(new java.awt.Color(102, 102, 102));
-        campoNomeSave.setForeground(new java.awt.Color(255, 255, 255));
-        campoNomeSave.setText("nome");
-        campoNomeSave.addActionListener(new java.awt.event.ActionListener() {
+        campoNomeSave1.setBackground(new java.awt.Color(102, 102, 102));
+        campoNomeSave1.setForeground(new java.awt.Color(255, 255, 255));
+        campoNomeSave1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeSaveActionPerformed(evt);
+                campoNomeSave1ActionPerformed(evt);
             }
         });
-        saveOption.add(campoNomeSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 150, -1));
+        saveOption.add(campoNomeSave1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 150, -1));
+
+        campoNomeSave2.setBackground(new java.awt.Color(102, 102, 102));
+        campoNomeSave2.setForeground(new java.awt.Color(255, 255, 255));
+        campoNomeSave2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNomeSave2ActionPerformed(evt);
+            }
+        });
+        saveOption.add(campoNomeSave2, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 210, 150, -1));
+
+        campoNomeSave3.setBackground(new java.awt.Color(102, 102, 102));
+        campoNomeSave3.setForeground(new java.awt.Color(255, 255, 255));
+        campoNomeSave3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNomeSave3ActionPerformed(evt);
+            }
+        });
+        saveOption.add(campoNomeSave3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 150, -1));
+
+        campoNomeSave4.setBackground(new java.awt.Color(102, 102, 102));
+        campoNomeSave4.setForeground(new java.awt.Color(255, 255, 255));
+        campoNomeSave4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNomeSave4ActionPerformed(evt);
+            }
+        });
+        saveOption.add(campoNomeSave4, new org.netbeans.lib.awtextra.AbsoluteConstraints(835, 210, 150, -1));
 
         progressoScritta1.setForeground(new java.awt.Color(0, 0, 0));
-        progressoScritta1.setText("progresso:");
-        saveOption.add(progressoScritta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
+        progressoScritta1.setText("PROGRESSO:");
+        saveOption.add(progressoScritta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
+
+        progressoScritta2.setForeground(new java.awt.Color(0, 0, 0));
+        progressoScritta2.setText("PROGRESSO:");
+        saveOption.add(progressoScritta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, -1, -1));
+
+        progressoScritta3.setForeground(new java.awt.Color(0, 0, 0));
+        progressoScritta3.setText("PROGRESSO:");
+        saveOption.add(progressoScritta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, -1, -1));
+
+        progressoScritta4.setForeground(new java.awt.Color(0, 0, 0));
+        progressoScritta4.setText("PROGRESSO:");
+        saveOption.add(progressoScritta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, -1, -1));
 
         progressoValore1.setForeground(new java.awt.Color(0, 0, 0));
         progressoValore1.setText("new game");
         progressoValore1.setToolTipText("");
-        saveOption.add(progressoValore1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
+        saveOption.add(progressoValore1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
+
+        progressoValore2.setForeground(new java.awt.Color(0, 0, 0));
+        progressoValore2.setText("new game");
+        progressoValore2.setToolTipText("");
+        saveOption.add(progressoValore2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 60, -1));
+
+        progressoValore3.setForeground(new java.awt.Color(0, 0, 0));
+        progressoValore3.setText("new game");
+        progressoValore3.setToolTipText("");
+        saveOption.add(progressoValore3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 60, -1));
+
+        progressoValore4.setForeground(new java.awt.Color(0, 0, 0));
+        progressoValore4.setText("new game");
+        progressoValore4.setToolTipText("");
+        saveOption.add(progressoValore4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 290, 60, -1));
 
         salvataggio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallery/salvataggio-backround1.png"))); // NOI18N
         salvataggio1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -219,7 +291,45 @@ public class Main extends javax.swing.JFrame {
                 salvataggio1ActionPerformed(evt);
             }
         });
-        saveOption.add(salvataggio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 170, 170));
+        saveOption.add(salvataggio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 170, 170));
+
+        salvataggio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallery/salvataggio-backround1.png"))); // NOI18N
+        salvataggio2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salvataggio2.setPreferredSize(new java.awt.Dimension(170, 170));
+        salvataggio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvataggio2ActionPerformed(evt);
+            }
+        });
+        saveOption.add(salvataggio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 240, 170, 170));
+
+        salvataggio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallery/salvataggio-backround1.png"))); // NOI18N
+        salvataggio3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salvataggio3.setPreferredSize(new java.awt.Dimension(170, 170));
+        salvataggio3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvataggio3ActionPerformed(evt);
+            }
+        });
+        saveOption.add(salvataggio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, 170, 170));
+
+        salvataggio4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallery/salvataggio-backround1.png"))); // NOI18N
+        salvataggio4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salvataggio4.setPreferredSize(new java.awt.Dimension(170, 170));
+        salvataggio4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvataggio4ActionPerformed(evt);
+            }
+        });
+        saveOption.add(salvataggio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 240, 170, 170));
+
+        indietroButton.setText("INDIETRO");
+        indietroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indietroButtonActionPerformed(evt);
+            }
+        });
+        saveOption.add(indietroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 520, -1, -1));
 
         saveOptionBackround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallery/saveOption-backround.png"))); // NOI18N
         saveOption.add(saveOptionBackround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 600));
@@ -246,7 +356,7 @@ public class Main extends javax.swing.JFrame {
                 campoNomeActionPerformed(evt);
             }
         });
-        creazionePersonaggio.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 190, -1));
+        creazionePersonaggio.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 190, -1));
 
         testoNome.setText("VITA:");
         creazionePersonaggio.add(testoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, 110, -1));
@@ -258,11 +368,11 @@ public class Main extends javax.swing.JFrame {
                 selezionaSessoActionPerformed(evt);
             }
         });
-        creazionePersonaggio.add(selezionaSesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 180, -1));
+        creazionePersonaggio.add(selezionaSesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 180, -1));
 
         selezionaClasse.setBackground(new java.awt.Color(111, 111, 111));
         selezionaClasse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guerriero", "Arcere", "Guaritore", "Esploratore", "Combattente", "Avventuriero", "Cavaliere" }));
-        creazionePersonaggio.add(selezionaClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 180, -1));
+        creazionePersonaggio.add(selezionaClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 180, -1));
 
         selezionaRazza.setBackground(new java.awt.Color(111, 111, 111));
         selezionaRazza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elfo", "Hobbit", "Stregone", "Nano", "Uomo" }));
@@ -276,21 +386,30 @@ public class Main extends javax.swing.JFrame {
                 selezionaRazzaActionPerformed(evt);
             }
         });
-        creazionePersonaggio.add(selezionaRazza, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 180, -1));
+        creazionePersonaggio.add(selezionaRazza, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 180, -1));
 
-        selezionaAbilita.setBackground(new java.awt.Color(111, 111, 111));
-        selezionaAbilita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Colpo Devastante", "Difesa Implacabile", "Tiro Rapido", "Occhio di Falco", "Colpo Silienzioso", "Passo Silenzioso", "Colpo d'ascia", "Resistenza di Ferro", "Carica Eroica", "Grido di Battaglia", "Luce Curativa", "Protezione Divina", "Lancio Preciso", "Furtività Avanzata" }));
-        selezionaAbilita.addActionListener(new java.awt.event.ActionListener() {
+        selezionaAbilita1.setBackground(new java.awt.Color(111, 111, 111));
+        selezionaAbilita1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Colpo Devastante", "Tiro Rapido", "Colpo Silienzioso", "Colpo d'ascia", "Carica Eroica", "Luce Curativa", "Lancio Preciso", " " }));
+        selezionaAbilita1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selezionaAbilitaActionPerformed(evt);
+                selezionaAbilita1ActionPerformed(evt);
             }
         });
-        creazionePersonaggio.add(selezionaAbilita, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 400, 190, -1));
+        creazionePersonaggio.add(selezionaAbilita1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 190, -1));
+
+        selezionaAbilita2.setBackground(new java.awt.Color(111, 111, 111));
+        selezionaAbilita2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Difesa Implacabile", "Occhio di Falco", "Passo Silenzioso", "Resistenza di Ferro", "Grido di Battaglia", "Protezione Divina", "Furtività Avanzata" }));
+        selezionaAbilita2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selezionaAbilita2ActionPerformed(evt);
+            }
+        });
+        creazionePersonaggio.add(selezionaAbilita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 190, -1));
 
         nomeCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeCampoNome.setForeground(new java.awt.Color(0, 0, 0));
         nomeCampoNome.setText("Nome : ");
-        creazionePersonaggio.add(nomeCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+        creazionePersonaggio.add(nomeCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
 
         inizia.setBackground(new java.awt.Color(111, 111, 111));
         inizia.setText("INIZIA");
@@ -304,27 +423,32 @@ public class Main extends javax.swing.JFrame {
         nomeSesso.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeSesso.setForeground(new java.awt.Color(0, 0, 0));
         nomeSesso.setText("Sesso :");
-        creazionePersonaggio.add(nomeSesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
+        creazionePersonaggio.add(nomeSesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
 
         nomeRazza.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeRazza.setForeground(new java.awt.Color(0, 0, 0));
         nomeRazza.setText("Razza :");
-        creazionePersonaggio.add(nomeRazza, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
+        creazionePersonaggio.add(nomeRazza, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
 
         miniTexturePersonaggio.setForeground(new java.awt.Color(0, 0, 0));
         miniTexturePersonaggio.setText("Immagine Mancante");
         creazionePersonaggio.add(miniTexturePersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 240, 180, 200));
 
-        nomeAbilita.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        nomeAbilita.setForeground(new java.awt.Color(0, 0, 0));
-        nomeAbilita.setText("Abilità :");
-        creazionePersonaggio.add(nomeAbilita, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, -1));
+        nomeAbilita1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomeAbilita1.setForeground(new java.awt.Color(0, 0, 0));
+        nomeAbilita1.setText("Abilità 1 :");
+        creazionePersonaggio.add(nomeAbilita1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+
+        nomeAbilita2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomeAbilita2.setForeground(new java.awt.Color(0, 0, 0));
+        nomeAbilita2.setText("Abilità 2 :");
+        creazionePersonaggio.add(nomeAbilita2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
 
         nomeClasse.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomeClasse.setForeground(new java.awt.Color(0, 0, 0));
         nomeClasse.setText("Classe :");
         nomeClasse.setToolTipText("");
-        creazionePersonaggio.add(nomeClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
+        creazionePersonaggio.add(nomeClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
 
         testoCorporatura.setText("CORPORATURA:");
         creazionePersonaggio.add(testoCorporatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, -1, -1));
@@ -346,7 +470,7 @@ public class Main extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         descrizioneAbilitaClasse.setViewportView(jTextArea1);
 
-        creazionePersonaggio.add(descrizioneAbilitaClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, -1, -1));
+        creazionePersonaggio.add(descrizioneAbilitaClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 390, 150));
 
         valoreVita.setText("0");
         creazionePersonaggio.add(valoreVita, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 230, 40, -1));
@@ -374,6 +498,15 @@ public class Main extends javax.swing.JFrame {
         creazionePersonaggio.add(creazionePersonaggioBackround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 600));
 
         getContentPane().add(creazionePersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1150, 600));
+
+        partita.setPreferredSize(new java.awt.Dimension(1150, 600));
+        partita.setLayout(null);
+
+        jLabel3.setText("jLabel3");
+        partita.add(jLabel3);
+        jLabel3.setBounds(500, 250, 37, 16);
+
+        getContentPane().add(partita, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void chiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chiudiActionPerformed
@@ -458,40 +591,53 @@ public class Main extends javax.swing.JFrame {
     private void salvataggio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvataggio1ActionPerformed
         
         
-        this.saveOption.setVisible(false);
+        currentSave = 1;
         
-        partita1 = new Partita();
+        if(!"".equals(campoNomeSave1.getText())){
+            
+            databasePartite.setNomeSave(currentSave, campoNomeSave1.getText());
+            
+            this.saveOption.setVisible(false);
         
-        if(getProgresso(save1)== 0){
-            this.creazionePersonaggio.setVisible(true);
+            partita1 = new Partita();
             
             
+        
+            if(databasePartite.getProgresso(currentSave)== 0){
             
-            personaggio1 = new Personaggio();
+                this.creazionePersonaggio.setVisible(true);
             
-            setStatPersonaggio();
+                personaggio1 = new Personaggio();
             
-            getStatPersonaggio();
+                setStatPersonaggio();
+                getStatPersonaggio();
+                
+                databasePartite.setProgresso(currentSave, databasePartite.getProgresso(currentSave)+1);
             
+            }else{
             
+                // fare partire la partita con il progresso corrente
             
-            
+            }
             
         }else{
             
-            // fare partire la partita con il progresso corrente
+            JOptionPane.showMessageDialog(this, "INSERIRE IL NOME PER CONTINUARE");
             
         }
         
         
+        
+        
+        
     }//GEN-LAST:event_salvataggio1ActionPerformed
 
-    private void campoNomeSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeSaveActionPerformed
+    private void campoNomeSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeSave1ActionPerformed
         // TODO add your handling code here:
         
         
         
-    }//GEN-LAST:event_campoNomeSaveActionPerformed
+    }//GEN-LAST:event_campoNomeSave1ActionPerformed
 
     private void iniziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniziaActionPerformed
         
@@ -500,20 +646,24 @@ public class Main extends javax.swing.JFrame {
         
         
         // imposta nome
-        if( this.campoNome.getText()== null){
+        if( this.campoNome.getText() == null){
             
-            //da fare pop up che avverte della mancanza di nome
+            JOptionPane.showMessageDialog(this, "INSERIRE IL NOME PER CONTINUARE");
             
         }else{
             setStatPersonaggio();
             
             getStatPersonaggio();
             
+            databasePartite.setPersonaggio(currentSave, this.personaggio1);
+            
+            this.saveOption.setVisible(false);
+            
+            this.partita.setVisible(true);
+            
+            
+            
         }
-        
-        
-        
-        personaggio1 = new Personaggio();
         
         
         
@@ -551,13 +701,15 @@ public class Main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_campoNomeInputMethodTextChanged
 
-    private void selezionaAbilitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selezionaAbilitaActionPerformed
+    private void selezionaAbilita1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selezionaAbilita1ActionPerformed
+        
+        
         
         setStatPersonaggio();
             
         getStatPersonaggio();
         
-    }//GEN-LAST:event_selezionaAbilitaActionPerformed
+    }//GEN-LAST:event_selezionaAbilita1ActionPerformed
 
     private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
         setStatPersonaggio();
@@ -574,7 +726,143 @@ public class Main extends javax.swing.JFrame {
 
     
     
+    private void salvataggio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvataggio2ActionPerformed
+        
+        currentSave = 2;
+        
+        if(!"".equals(campoNomeSave2.getText())){
+            
+            this.saveOption.setVisible(false);
+        
+            partita2 = new Partita();
+        
+            if(getProgresso(save1)== 0){
+            
+                this.creazionePersonaggio.setVisible(true);
+            
+                personaggio2 = new Personaggio();
+            
+                setStatPersonaggio();
+                getStatPersonaggio();
+            
+            
+            }else{
+            
+                // fare partire la partita con il progresso corrente
+            
+            }
+            
+        }else{
+            
+            JOptionPane.showMessageDialog(this, "INSERIRE IL NOME PER CONTINUARE");
+            
+        }
+    }//GEN-LAST:event_salvataggio2ActionPerformed
+
+    private void campoNomeSave2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeSave2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNomeSave2ActionPerformed
+
     
+    private void salvataggio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvataggio3ActionPerformed
+        
+        currentSave = 3;
+        
+        if(!"".equals(campoNomeSave3.getText())){
+            
+            this.saveOption.setVisible(false);
+        
+            partita3 = new Partita();
+        
+            if(getProgresso(save1)== 0){
+            
+                this.creazionePersonaggio.setVisible(true);
+            
+                personaggio3 = new Personaggio();
+            
+                setStatPersonaggio();
+                getStatPersonaggio();
+            
+            
+            }else{
+            
+                // fare partire la partita con il progresso corrente
+            
+            }
+            
+        }else{
+            
+            JOptionPane.showMessageDialog(this, "INSERIRE IL NOME PER CONTINUARE");
+            
+        }
+    }//GEN-LAST:event_salvataggio3ActionPerformed
+
+    
+    private void campoNomeSave3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeSave3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNomeSave3ActionPerformed
+
+    
+    
+    private void salvataggio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvataggio4ActionPerformed
+        
+        currentSave = 4;
+        
+        if(!"".equals(campoNomeSave4.getText())){
+            
+            this.saveOption.setVisible(false);
+        
+            partita4 = new Partita();
+        
+            if(getProgresso(save1)== 0){
+            
+                this.creazionePersonaggio.setVisible(true);
+            
+                personaggio4 = new Personaggio();
+            
+                setStatPersonaggio();
+                getStatPersonaggio();
+            
+            
+            }else{
+            
+                // fare partire la partita con il progresso corrente
+            
+            }
+            
+        }else{
+            
+            JOptionPane.showMessageDialog(this, "INSERIRE IL NOME PER CONTINUARE");
+            
+        }
+    }//GEN-LAST:event_salvataggio4ActionPerformed
+
+    
+    
+    
+    
+    
+    
+    private void campoNomeSave4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeSave4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNomeSave4ActionPerformed
+
+    private void indietroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indietroButtonActionPerformed
+        
+        this.saveOption.setVisible(false);
+        
+        this.screen.setVisible(true);
+        
+    }//GEN-LAST:event_indietroButtonActionPerformed
+
+    private void selezionaAbilita2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selezionaAbilita2ActionPerformed
+        
+        
+        setStatPersonaggio();
+            
+        getStatPersonaggio();
+    }//GEN-LAST:event_selezionaAbilita2ActionPerformed
+
     
     
     /**
@@ -650,13 +938,23 @@ public class Main extends javax.swing.JFrame {
         
         this.saveOption.setVisible(false);
         
-        if(getProgresso(save1)== 0 ){
-            this.progressoValore1.setText("nuova partita");
+        databasePartite = new salvaPartitaSQL();
+        
+        
+        //PRIMO SALVATAGGIO
+        if(databasePartite.getProgresso(1)== 0){
+            this.progressoValore1.setText("Nuova Partita");
         }else{
             
-            this.progressoValore1.setText(getProgresso(save1) + "");
+            this.progressoValore1.setText(databasePartite.getProgresso(1) + " %");
             
+            this.campoNomeSave1.setText(databasePartite.getNomeSave(1));
         }
+        
+        //SECONDO SALVATAGGIO
+        
+        
+        
         
         
         
@@ -670,6 +968,19 @@ public class Main extends javax.swing.JFrame {
         this.creazionePersonaggio.setLocation(screen.getLocation());
         
         this.creazionePersonaggio.setVisible(false);
+        
+        
+        
+    }
+    
+    
+    private void ceatePartita(){
+        
+        this.partita.setSize(screen.getSize());
+        
+        this.partita.setLocation(screen.getLocation());
+        
+        this.partita.setVisible(false);
         
         
         
@@ -799,9 +1110,11 @@ public class Main extends javax.swing.JFrame {
         
         personaggio1.setClasse(selezionaClasse.getSelectedItem().toString());
         
-        personaggio1.setAbilita(selezionaAbilita.getSelectedItem().toString());
+        personaggio1.setAbilita1(selezionaAbilita1.getSelectedItem().toString());
         
-        personaggio1.setPersonaggioStat(selezionaRazza.getSelectedItem().toString());
+        personaggio1.setAbilita2(selezionaAbilita2.getSelectedItem().toString());
+        
+        personaggio1.setPersonaggioStatDefault(selezionaRazza.getSelectedItem().toString());
         
     }
     
@@ -826,17 +1139,24 @@ public class Main extends javax.swing.JFrame {
     
     //variabili personali
     
-    public static Personaggio personaggio1;
-    public static Partita partita1;
+    public  Personaggio personaggio1;
+    public  Partita partita1;
+    
+    public  Personaggio personaggio2;
+    public  Partita partita2;
+    
+    public  Personaggio personaggio3;
+    public  Partita partita3;
+    
+    public  Personaggio personaggio4;
+    public  Partita partita4;
+    
+    
+    private int currentSave = 0;
     
     
     
-    
-    
-    
-    
-    
-    private String nome1;
+    public static salvaPartitaSQL databasePartite;
     
     
     
@@ -850,7 +1170,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel TestoDIfesa;
     private javax.swing.JPanel barramultifunzione;
     private javax.swing.JTextField campoNome;
-    private javax.swing.JTextField campoNomeSave;
+    private javax.swing.JTextField campoNomeSave1;
+    private javax.swing.JTextField campoNomeSave2;
+    private javax.swing.JTextField campoNomeSave3;
+    private javax.swing.JTextField campoNomeSave4;
     private javax.swing.JButton chiudi;
     private javax.swing.JButton continua;
     private javax.swing.JPanel creazionePersonaggio;
@@ -858,27 +1181,41 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane descrizioneAbilitaClasse;
     private javax.swing.JLabel homeBackround;
     private javax.swing.JButton impostazioni;
+    private javax.swing.JButton indietroButton;
     private javax.swing.JButton inizia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton maxi;
     private javax.swing.JLabel miniTexturePersonaggio;
-    private javax.swing.JLabel nomeAbilita;
+    private javax.swing.JLabel nomeAbilita1;
+    private javax.swing.JLabel nomeAbilita2;
     private javax.swing.JLabel nomeCampoNome;
     private javax.swing.JLabel nomeClasse;
     private javax.swing.JLabel nomeRazza;
     private javax.swing.JLabel nomeSesso;
     private javax.swing.JButton nuovapartita;
+    private javax.swing.JPanel partita;
     private javax.swing.JLabel progressoScritta1;
+    private javax.swing.JLabel progressoScritta2;
+    private javax.swing.JLabel progressoScritta3;
+    private javax.swing.JLabel progressoScritta4;
     private javax.swing.JLabel progressoValore1;
+    private javax.swing.JLabel progressoValore2;
+    private javax.swing.JLabel progressoValore3;
+    private javax.swing.JLabel progressoValore4;
     private javax.swing.JButton restore;
     private javax.swing.JButton riduci;
     private javax.swing.JButton salvataggio1;
+    private javax.swing.JButton salvataggio2;
+    private javax.swing.JButton salvataggio3;
+    private javax.swing.JButton salvataggio4;
     private javax.swing.JPanel saveOption;
     private javax.swing.JLabel saveOptionBackround;
     private javax.swing.JPanel screen;
-    private javax.swing.JComboBox<String> selezionaAbilita;
+    private javax.swing.JComboBox<String> selezionaAbilita1;
+    private javax.swing.JComboBox<String> selezionaAbilita2;
     private javax.swing.JComboBox<String> selezionaClasse;
     private javax.swing.JComboBox<String> selezionaRazza;
     private javax.swing.JComboBox<String> selezionaSesso;

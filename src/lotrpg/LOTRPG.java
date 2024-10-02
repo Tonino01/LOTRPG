@@ -10,7 +10,7 @@ import utility.Partita;
 public class LOTRPG {
 
     
-    
+    public static Main a;
     
     /**
      * @param args the command line arguments
@@ -36,7 +36,7 @@ public class LOTRPG {
         //</editor-fold>
         
         
-        Main a = new Main();
+        a = new Main();
                 
         a.setVisible(true);
         
