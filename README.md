@@ -7,7 +7,7 @@
 
 Titolo: "LOTR"
 
-Personaggi configurabili come: ELFI, UMANI, HOBBIT, NANI, STREGONI
+Personaggi configurabili come: ELFI, UMANI, HOBBIT, NANI e STREGONI
 
 in più con diverse classi che danno bonus e malus asseconda delle necessità
 e 2  abilita sia passive che attive, da utilizzare in gioco
