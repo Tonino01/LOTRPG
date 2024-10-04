@@ -730,21 +730,26 @@ public class Main extends javax.swing.JFrame {
         
         currentSave = 2;
         
-        if(!"".equals(campoNomeSave2.getText())){
+        if(!"".equals(campoNomeSave1.getText())){
+            
+            databasePartite.setNomeSave(currentSave, campoNomeSave1.getText());
             
             this.saveOption.setVisible(false);
         
-            partita2 = new Partita();
+            partita1 = new Partita();
+            
+            
         
-            if(getProgresso(save1)== 0){
+            if(databasePartite.getProgresso(currentSave)== 0){
             
                 this.creazionePersonaggio.setVisible(true);
             
-                personaggio2 = new Personaggio();
+                personaggio1 = new Personaggio();
             
                 setStatPersonaggio();
                 getStatPersonaggio();
-            
+                
+                databasePartite.setProgresso(currentSave, databasePartite.getProgresso(currentSave)+1);
             
             }else{
             
@@ -757,6 +762,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "INSERIRE IL NOME PER CONTINUARE");
             
         }
+        
     }//GEN-LAST:event_salvataggio2ActionPerformed
 
     private void campoNomeSave2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeSave2ActionPerformed
@@ -768,21 +774,26 @@ public class Main extends javax.swing.JFrame {
         
         currentSave = 3;
         
-        if(!"".equals(campoNomeSave3.getText())){
+        if(!"".equals(campoNomeSave1.getText())){
+            
+            databasePartite.setNomeSave(currentSave, campoNomeSave1.getText());
             
             this.saveOption.setVisible(false);
         
-            partita3 = new Partita();
+            partita1 = new Partita();
+            
+            
         
-            if(getProgresso(save1)== 0){
+            if(databasePartite.getProgresso(currentSave)== 0){
             
                 this.creazionePersonaggio.setVisible(true);
             
-                personaggio3 = new Personaggio();
+                personaggio1 = new Personaggio();
             
                 setStatPersonaggio();
                 getStatPersonaggio();
-            
+                
+                databasePartite.setProgresso(currentSave, databasePartite.getProgresso(currentSave)+1);
             
             }else{
             
@@ -808,21 +819,26 @@ public class Main extends javax.swing.JFrame {
         
         currentSave = 4;
         
-        if(!"".equals(campoNomeSave4.getText())){
+        if(!"".equals(campoNomeSave1.getText())){
+            
+            databasePartite.setNomeSave(currentSave, campoNomeSave1.getText());
             
             this.saveOption.setVisible(false);
         
-            partita4 = new Partita();
+            partita1 = new Partita();
+            
+            
         
-            if(getProgresso(save1)== 0){
+            if(databasePartite.getProgresso(currentSave)== 0){
             
                 this.creazionePersonaggio.setVisible(true);
             
-                personaggio4 = new Personaggio();
+                personaggio1 = new Personaggio();
             
                 setStatPersonaggio();
                 getStatPersonaggio();
-            
+                
+                databasePartite.setProgresso(currentSave, databasePartite.getProgresso(currentSave)+1);
             
             }else{
             
@@ -938,20 +954,24 @@ public class Main extends javax.swing.JFrame {
         
         this.saveOption.setVisible(false);
         
+        
+        
+        //INSTANZIAMENTO DATABASE
+        
         databasePartite = new salvaPartitaSQL();
         
         
-        //PRIMO SALVATAGGIO
-        if(databasePartite.getProgresso(1)== 0){
+        //INALIZAZZIONE SALVATAGGI
+        
+        if(databasePartite.getProgresso(currentSave)== 0){
             this.progressoValore1.setText("Nuova Partita");
         }else{
             
-            this.progressoValore1.setText(databasePartite.getProgresso(1) + " %");
+            this.progressoValore1.setText(databasePartite.getProgresso(currentSave) + " %");
             
-            this.campoNomeSave1.setText(databasePartite.getNomeSave(1));
+            this.campoNomeSave1.setText(databasePartite.getNomeSave(currentSave));
         }
         
-        //SECONDO SALVATAGGIO
         
         
         
@@ -1055,48 +1075,7 @@ public class Main extends javax.swing.JFrame {
     }
     
     
-    private int getProgresso(String filePath){
-        
-        int progresso = 0;
-        
-        
-        
-        BufferedReader reader = null;
-
-        try {
-            // Apri il file e crea il BufferedReader
-            reader = new BufferedReader(new FileReader(filePath));
-
-            // Leggi il file riga per riga
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Controlla se la riga contiene la parola "progresso: "
-                if (line.contains("Progresso: ")) {
-                    // Estrai il numero dopo "progresso: "
-                    String progressoStr = line.split("Progresso: ")[1].trim();
-                    try {
-                        progresso = Integer.parseInt(progressoStr);
-                        System.out.println("Il Progresso è: " + progresso);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Formato non valido dopo 'Progresso: '");
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace(); // Stampa l'errore se non si riesce a leggere il file
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close(); // Chiudi il reader per evitare memory leak
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-        
-        
-        return progresso;
-    }
+    
     
     
     public void setStatPersonaggio(){

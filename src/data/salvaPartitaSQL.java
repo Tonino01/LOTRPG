@@ -42,6 +42,8 @@ public class salvaPartitaSQL {
             System.out.println(e.getMessage());
         }
 
+        //DA RIVEDERE: INSERISCE OGNI VOLTA CHE SI AVVIA
+        
         inserisci(1, null, 0, null, null);
         
        
@@ -166,16 +168,18 @@ public class salvaPartitaSQL {
             
             rs = stmt.executeQuery(sql);
             
+            try {
+                res = rs.getString("NomeSave");
+            } catch (SQLException ex) {
+                Logger.getLogger(salvaPartitaSQL.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         
         
-        try {
-            res = rs.getString("NomeSave");
-        } catch (SQLException ex) {
-            Logger.getLogger(salvaPartitaSQL.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
         return res;
     }
@@ -199,17 +203,20 @@ public class salvaPartitaSQL {
             
             rs = stmt.executeQuery(sql);
             
+            
+            try {
+                res = rs.getInt("Progresso");
+            } catch (SQLException ex) {
+                Logger.getLogger(salvaPartitaSQL.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         
         
         
-        try {
-            res = rs.getInt("Progresso");
-        } catch (SQLException ex) {
-            Logger.getLogger(salvaPartitaSQL.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
         return res;
         
@@ -234,17 +241,19 @@ public class salvaPartitaSQL {
             
             rs = stmt.executeQuery(sql);
             
+            try {
+                res = rs.getObject("Personaggio");
+            } catch (SQLException ex) {
+                Logger.getLogger(salvaPartitaSQL.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         
         
         
-        try {
-            res = rs.getObject("Personaggio");
-        } catch (SQLException ex) {
-            Logger.getLogger(salvaPartitaSQL.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
         return res;
         
